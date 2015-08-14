@@ -57,7 +57,7 @@ Partial Class ViewerForm
         '
         'ofdSelectPicture
         '
-        Me.ofdSelectPicture.Filter = "Windows Bitmaps|*.BMP| JPEG Files|*.JPG"
+        Me.ofdSelectPicture.Filter = "All Files|*.*"
         Me.ofdSelectPicture.Title = "Select Picture"
         '
         'btnEnlarge
@@ -145,18 +145,18 @@ Partial Class ViewerForm
         'mnuDrawBorder
         '
         Me.mnuDrawBorder.Name = "mnuDrawBorder"
-        Me.mnuDrawBorder.Size = New System.Drawing.Size(152, 22)
+        Me.mnuDrawBorder.Size = New System.Drawing.Size(151, 22)
         Me.mnuDrawBorder.Text = "&Draw Border"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(148, 6)
         '
         'mnuOptions
         '
         Me.mnuOptions.Name = "mnuOptions"
-        Me.mnuOptions.Size = New System.Drawing.Size(152, 22)
+        Me.mnuOptions.Size = New System.Drawing.Size(151, 22)
         Me.mnuOptions.Text = "&Options..."
         '
         'mnuPictureContext
@@ -214,8 +214,9 @@ Partial Class ViewerForm
         '
         'picShowPicture
         '
-        Me.picShowPicture.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.picShowPicture.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.picShowPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.picShowPicture.ContextMenuStrip = Me.mnuPictureContext
         Me.picShowPicture.Location = New System.Drawing.Point(8, 59)
@@ -237,8 +238,10 @@ Partial Class ViewerForm
         'lblStatus
         '
         Me.lblStatus.Name = "lblStatus"
-        Me.lblStatus.Size = New System.Drawing.Size(111, 17)
+        Me.lblStatus.Size = New System.Drawing.Size(314, 17)
+        Me.lblStatus.Spring = True
         Me.lblStatus.Text = "No image loaded"
+        Me.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'ViewerForm
         '

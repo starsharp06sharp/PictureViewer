@@ -2,9 +2,18 @@
     Public Sub OpenPicture()
         'Show the open file dialog box.
         If ViewerForm.ofdSelectPicture.ShowDialog = DialogResult.OK Then
-            'Load the picture into the picture box.
-            ViewerForm.picShowPicture.Image = _
-                Image.FromFile(ViewerForm.ofdSelectPicture.FileName)
+            Try
+                'Load the picture into the picture box.
+                ViewerForm.picShowPicture.Image = _
+                    Image.FromFile(ViewerForm.ofdSelectPicture.FileName)
+            Catch exNotPic As System.OutOfMemoryException
+                MessageBox.Show("The file you have chosen is not an image file.", _
+                                "别闹", MessageBoxButtons.OK, _
+                                MessageBoxIcon.Information)
+            Catch exUnknown As Exception
+                MessageBox.Show("An unknown error has occurred: " & exUnknown.Message)
+            End Try
+
             'show the name of the file in the statusbar
             ViewerForm.sbrMyStatusStrip.Items(0).Text = _
                 ViewerForm.ofdSelectPicture.FileName
