@@ -32,6 +32,7 @@ Partial Class ViewerForm
         Me.mnuMainMenu = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuOpenPicture = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuProperties = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuQuit = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuConfirmOnExit = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -45,14 +46,15 @@ Partial Class ViewerForm
         Me.tbbDrawBorder = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.tbbOptions = New System.Windows.Forms.ToolStripButton()
-        Me.picShowPicture = New System.Windows.Forms.PictureBox()
+        Me.tbbGetFileAttributes = New System.Windows.Forms.ToolStripButton()
         Me.sbrMyStatusStrip = New System.Windows.Forms.StatusStrip()
         Me.lblStatus = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.picShowPicture = New System.Windows.Forms.PictureBox()
         Me.mnuMainMenu.SuspendLayout()
         Me.mnuPictureContext.SuspendLayout()
         Me.tbrMainToolbar.SuspendLayout()
-        CType(Me.picShowPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.sbrMyStatusStrip.SuspendLayout()
+        CType(Me.picShowPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ofdSelectPicture
@@ -63,7 +65,7 @@ Partial Class ViewerForm
         'btnEnlarge
         '
         Me.btnEnlarge.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnEnlarge.Location = New System.Drawing.Point(281, 289)
+        Me.btnEnlarge.Location = New System.Drawing.Point(336, 274)
         Me.btnEnlarge.Name = "btnEnlarge"
         Me.btnEnlarge.Size = New System.Drawing.Size(21, 23)
         Me.btnEnlarge.TabIndex = 6
@@ -73,7 +75,7 @@ Partial Class ViewerForm
         'btnShrink
         '
         Me.btnShrink.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnShrink.Location = New System.Drawing.Point(302, 289)
+        Me.btnShrink.Location = New System.Drawing.Point(357, 274)
         Me.btnShrink.Name = "btnShrink"
         Me.btnShrink.Size = New System.Drawing.Size(21, 23)
         Me.btnShrink.TabIndex = 7
@@ -84,7 +86,7 @@ Partial Class ViewerForm
         '
         Me.lblX.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblX.AutoSize = True
-        Me.lblX.Location = New System.Drawing.Point(281, 251)
+        Me.lblX.Location = New System.Drawing.Point(336, 236)
         Me.lblX.Name = "lblX"
         Me.lblX.Size = New System.Drawing.Size(17, 12)
         Me.lblX.TabIndex = 3
@@ -94,7 +96,7 @@ Partial Class ViewerForm
         '
         Me.lblY.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblY.AutoSize = True
-        Me.lblY.Location = New System.Drawing.Point(281, 266)
+        Me.lblY.Location = New System.Drawing.Point(336, 251)
         Me.lblY.Name = "lblY"
         Me.lblY.Size = New System.Drawing.Size(17, 12)
         Me.lblY.TabIndex = 4
@@ -105,13 +107,13 @@ Partial Class ViewerForm
         Me.mnuMainMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ToolsToolStripMenuItem})
         Me.mnuMainMenu.Location = New System.Drawing.Point(0, 0)
         Me.mnuMainMenu.Name = "mnuMainMenu"
-        Me.mnuMainMenu.Size = New System.Drawing.Size(329, 25)
+        Me.mnuMainMenu.Size = New System.Drawing.Size(384, 25)
         Me.mnuMainMenu.TabIndex = 8
         Me.mnuMainMenu.Text = "MenuStrip1"
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuOpenPicture, Me.mnuQuit, Me.mnuConfirmOnExit})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuOpenPicture, Me.mnuProperties, Me.mnuQuit, Me.mnuConfirmOnExit})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(39, 21)
         Me.FileToolStripMenuItem.Text = "&File"
@@ -122,6 +124,12 @@ Partial Class ViewerForm
         Me.mnuOpenPicture.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
         Me.mnuOpenPicture.Size = New System.Drawing.Size(207, 22)
         Me.mnuOpenPicture.Text = "&Open Picture..."
+        '
+        'mnuProperties
+        '
+        Me.mnuProperties.Name = "mnuProperties"
+        Me.mnuProperties.Size = New System.Drawing.Size(207, 22)
+        Me.mnuProperties.Text = "&Properties..."
         '
         'mnuQuit
         '
@@ -173,10 +181,10 @@ Partial Class ViewerForm
         '
         'tbrMainToolbar
         '
-        Me.tbrMainToolbar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tbbOpenPicture, Me.tbbDrawBorder, Me.ToolStripSeparator2, Me.tbbOptions})
+        Me.tbrMainToolbar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tbbOpenPicture, Me.tbbDrawBorder, Me.ToolStripSeparator2, Me.tbbOptions, Me.tbbGetFileAttributes})
         Me.tbrMainToolbar.Location = New System.Drawing.Point(0, 25)
         Me.tbrMainToolbar.Name = "tbrMainToolbar"
-        Me.tbrMainToolbar.Size = New System.Drawing.Size(329, 25)
+        Me.tbrMainToolbar.Size = New System.Drawing.Size(384, 25)
         Me.tbrMainToolbar.TabIndex = 10
         Me.tbrMainToolbar.Text = "ToolStrip1"
         '
@@ -212,6 +220,32 @@ Partial Class ViewerForm
         Me.tbbOptions.Size = New System.Drawing.Size(23, 22)
         Me.tbbOptions.Text = "Options"
         '
+        'tbbGetFileAttributes
+        '
+        Me.tbbGetFileAttributes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tbbGetFileAttributes.Image = Global.PictureViewer.My.Resources.Resources.Properties
+        Me.tbbGetFileAttributes.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tbbGetFileAttributes.Name = "tbbGetFileAttributes"
+        Me.tbbGetFileAttributes.Size = New System.Drawing.Size(23, 22)
+        Me.tbbGetFileAttributes.Text = "Get File Attributes"
+        '
+        'sbrMyStatusStrip
+        '
+        Me.sbrMyStatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lblStatus})
+        Me.sbrMyStatusStrip.Location = New System.Drawing.Point(0, 300)
+        Me.sbrMyStatusStrip.Name = "sbrMyStatusStrip"
+        Me.sbrMyStatusStrip.Size = New System.Drawing.Size(384, 22)
+        Me.sbrMyStatusStrip.TabIndex = 11
+        Me.sbrMyStatusStrip.Text = "StatusStrip1"
+        '
+        'lblStatus
+        '
+        Me.lblStatus.Name = "lblStatus"
+        Me.lblStatus.Size = New System.Drawing.Size(369, 17)
+        Me.lblStatus.Spring = True
+        Me.lblStatus.Text = "No image loaded"
+        Me.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'picShowPicture
         '
         Me.picShowPicture.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -221,33 +255,16 @@ Partial Class ViewerForm
         Me.picShowPicture.ContextMenuStrip = Me.mnuPictureContext
         Me.picShowPicture.Location = New System.Drawing.Point(8, 59)
         Me.picShowPicture.Name = "picShowPicture"
-        Me.picShowPicture.Size = New System.Drawing.Size(265, 253)
+        Me.picShowPicture.Size = New System.Drawing.Size(320, 238)
         Me.picShowPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.picShowPicture.TabIndex = 2
         Me.picShowPicture.TabStop = False
-        '
-        'sbrMyStatusStrip
-        '
-        Me.sbrMyStatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lblStatus})
-        Me.sbrMyStatusStrip.Location = New System.Drawing.Point(0, 315)
-        Me.sbrMyStatusStrip.Name = "sbrMyStatusStrip"
-        Me.sbrMyStatusStrip.Size = New System.Drawing.Size(329, 22)
-        Me.sbrMyStatusStrip.TabIndex = 11
-        Me.sbrMyStatusStrip.Text = "StatusStrip1"
-        '
-        'lblStatus
-        '
-        Me.lblStatus.Name = "lblStatus"
-        Me.lblStatus.Size = New System.Drawing.Size(314, 17)
-        Me.lblStatus.Spring = True
-        Me.lblStatus.Text = "No image loaded"
-        Me.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'ViewerForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(329, 337)
+        Me.ClientSize = New System.Drawing.Size(384, 322)
         Me.Controls.Add(Me.sbrMyStatusStrip)
         Me.Controls.Add(Me.tbrMainToolbar)
         Me.Controls.Add(Me.lblY)
@@ -258,7 +275,7 @@ Partial Class ViewerForm
         Me.Controls.Add(Me.mnuMainMenu)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.mnuMainMenu
-        Me.MinimumSize = New System.Drawing.Size(345, 375)
+        Me.MinimumSize = New System.Drawing.Size(400, 360)
         Me.Name = "ViewerForm"
         Me.Text = "Picture Viewer"
         Me.mnuMainMenu.ResumeLayout(False)
@@ -266,9 +283,9 @@ Partial Class ViewerForm
         Me.mnuPictureContext.ResumeLayout(False)
         Me.tbrMainToolbar.ResumeLayout(False)
         Me.tbrMainToolbar.PerformLayout()
-        CType(Me.picShowPicture, System.ComponentModel.ISupportInitialize).EndInit()
         Me.sbrMyStatusStrip.ResumeLayout(False)
         Me.sbrMyStatusStrip.PerformLayout()
+        CType(Me.picShowPicture, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -297,5 +314,7 @@ Partial Class ViewerForm
     Friend WithEvents tbbOptions As System.Windows.Forms.ToolStripButton
     Friend WithEvents sbrMyStatusStrip As System.Windows.Forms.StatusStrip
     Friend WithEvents lblStatus As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents tbbGetFileAttributes As System.Windows.Forms.ToolStripButton
+    Friend WithEvents mnuProperties As System.Windows.Forms.ToolStripMenuItem
 
 End Class
